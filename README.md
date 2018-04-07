@@ -1,27 +1,69 @@
-# ChatServer_and_ChatClient
-command line chat application "client"" and "server" write in c implement with "select" (or can  compile to use "poll")
+This command line chat applications implement "client"" and "server" 
+write in c with socket API "select" (or can compile to use socket API "poll")
+first run the server "server.exe" then run the clients "client.exe".
 
-run the "server" then run the "clients"
+In the example below use PowerShell three command lines a 
+server, client(1)"avi, client(2)"ben" which send message "Hello" to client(1)"avi".
+
+CHAT_SERVER
+~~~~~~~~~~~
+C:\MyData\Server_Client\Server> .\server.exe
+Welcome to Chat Server v1.4
+The Server is using select() method
+Listener on port 8888
+Waiting for connections ...
 
 
-For compilation install "cygwin" and select "gcc" package to be install
+
+CHAT_CLIENT_1
+~~~~~~~~~~~~~
+PC:\MyData\Server_Client\Client> .\client.exe
+Socket created
+Connected
+Welcome to Chat Server v1.4
+name:avi
+Name Added.
 
 
-//$./server.exe PORT_NUM    (if the parameter is missing it will use 8888 as PORT_NUM)
-//$./server.exe 7777
-// use cygwin1.dll (take sygwin dll x86  and not 64_x86 dll)in the same folder. 
-// from cmd> line.
-// >server.exe PORT_NUM
+CHAT_CLIENT_2
+~~~~~~~~~~~~~
+C:\MyData\Server_Client\Client> .\client.exe
+Socket created
+Connected
+Welcome to Chat Server v1.4
+name:ben
+Name Added.
+
+list:
+1) name=avi socket=4
+2) name=ben socket=5 (me)
+
+avi:Hello
+Send to Client.
+
+CHAT_CLIENT_1
+~~~~~~~~~~~~~
+ben->avi:Hello
 
 
+CHAT_SERVER
+~~~~~~~~~~~
+New connection, socket:4, ip:127.0.0.1, port:55325
+Welcome message sent successfully
+Adding to list of sockets at position:0 socket:4.
+Socket(4) add new name=avi
+New connection, socket:5, ip:127.0.0.1, port:55339
+Welcome message sent successfully
+Adding to list of sockets at position:1 socket:5.
+Socket(5) add new name=ben
+Client socket(5) name(ben) request LIST:
+1) name=avi socket=4
+2) name=ben socket=5 (me)
+Message to Cilent: ben->avi:Hello
 
-for runninng:
--------------
-cmd
-cd c:\MyData\Server_Client\Client
-client.exe
 
-type 
+CHAT_CLIENT_1
+~~~~~~~~~~~~~
 help:
 
 NAME:new_name
@@ -50,33 +92,47 @@ on  (1)          show all recevied characters include <CR><LF>.
 BYE:
 Leave without notice to anyone.
 
+EXIT:
+Inform every one you are going to leave, then leave.
+
+ERASE:
+Erase the registered clients list
+(everybody need to NAME again!!)
 
 
-for Client compilation:
------------------------
-cd C:\\MyData\\Server_Client\\Client
-gcc -o client client.c
-# copy to the compiled "client.exe" folder the "cygwin1.dll" file
-# from "C:\cygwin64\bin" cygwin istalled folder
-
-For the server compilation :
-----------------------------
-#define USE_SELECT 
-//Allow the define above definition will cause to work with socket "select()" function (the old way)
-//Undefined above definition will cause to work with socket "poll()" function (instead of "select()")
-
-# run "Cygwin64 Terminal" get the "$" prompt:
-#  $ cd C:\\MyData\\Server_Client\\Server
-#  make
-#  make clean
-# copy to the compiled "server.exe" the "cygwin1.dll" file
-# from "C:\cygwin64\bin" cygwin istalled folder
-# if you complile with another cyggwin e.g. 32 bit cygwin need to use the 32bit "cygwin1.dll"
-# mixing 32bit "cygwin1.dll"  with "server.exe" compile 64 bit will crash. 
-# with runtime meaasge box display:
-# Application Error 
-# The application was unable to start correctly(0xc000007b).
-# click OK to close the application
+User_Params:
+------------
+name=avi
+socket=4
+echo=0
+cr=0
 
 
+
+
+
+For Client compilation:
+run "Cygwin64 Terminal" get the "$" prompt:
+$ cd C:\\MyData\\Server_Client\\Client
+$ gcc -o client client.c
+copy "cygwin1.dll" from "C:\cygwin64\bin" to the folder with the compiled "client.exe".
+ 
+ 
+For the server compilation:
+#define USE_SELECT //Allow the define above definition will cause to work with socket "select()" function (the old way) 
+Undefined above definition will cause to work with socket "poll()" function (instead of "select()")
+
+run "Cygwin64 Terminal" get the "$" prompt:
+$ cd C:\\MyData\\Server_Client\\Server
+make clean
+make 
+copy "cygwin1.dll" from "C:\cygwin64\bin" to the folder with the compiled "server.exe".
+
+NOTE:
+~~~~~
+for example mixing 32bit "cygwin1.dll" with "server.exe" compile with cygwin 64 bit will crash.
+with runtime meaasge box display:
+Application Error
+The application was unable to start correctly(0xc000007b).
+click OK to close the application
 
