@@ -1,13 +1,14 @@
-# ChatServer_and_ChatClient
-command line chat application "client"" and "server" write in c implement with "select" (or can  compile to use "poll")
+# Chat Server and Chat Client
+There are two command line applications
+ "client"" and "server" that write in c and server is implemented using "select" (or server can compile with "poll")
 
 run the "server" then run the "clients"
 
-For compilation install "cygwin" and select "gcc" package to be install
+install "cygwin" and select "gcc" package to be install also (as source for cygwin1.dll file, and for project compilations)
 
 $./server.exe PORT_NUM    (if the parameter is missing it will use 8888 as PORT_NUM)
 $./server.exe 7777
- use cygwin1.dll (take sygwin dll x86  and not 64_x86 dll)in the same folder. 
+ use cygwin1.dll (take sygwin dll x86  and not 64_x86 dll) in the same folder. 
  from cmd> line.
  >server.exe PORT_NUM
 
