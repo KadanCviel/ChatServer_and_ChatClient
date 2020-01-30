@@ -3,21 +3,17 @@ command line chat application "client"" and "server" write in c implement with "
 
 run the "server" then run the "clients"
 
-
 For compilation install "cygwin" and select "gcc" package to be install
 
-
-//$./server.exe PORT_NUM    (if the parameter is missing it will use 8888 as PORT_NUM)
-//$./server.exe 7777
-// use cygwin1.dll (take sygwin dll x86  and not 64_x86 dll)in the same folder. 
-// from cmd> line.
-// >server.exe PORT_NUM
-
+$./server.exe PORT_NUM    (if the parameter is missing it will use 8888 as PORT_NUM)
+$./server.exe 7777
+ use cygwin1.dll (take sygwin dll x86  and not 64_x86 dll)in the same folder. 
+ from cmd> line.
+ >server.exe PORT_NUM
 
 
 for runninng:
-
-cmd
+type "cmd"
 cd c:\MyData\Server_Client\Client
 client.exe
 
@@ -50,13 +46,11 @@ on  (1)          show all recevied characters include <CR><LF>.
 BYE:
 Leave without notice to anyone.
 
-
-
 for Client compilation:
 cd C:\\MyData\\Server_Client\\Client
 gcc -o client client.c
-# copy to the compiled "client.exe" folder the "cygwin1.dll" file
-# from "C:\cygwin64\bin" cygwin istalled folder
+ copy to the compiled "client.exe" folder the "cygwin1.dll" file
+ from "C:\cygwin64\bin" cygwin istalled folder
 
 For the server compilation :
 #define USE_SELECT 
