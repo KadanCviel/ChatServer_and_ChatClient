@@ -16,7 +16,7 @@ For compilation install "cygwin" and select "gcc" package to be install
 
 
 for runninng:
--------------
+
 cmd
 cd c:\MyData\Server_Client\Client
 client.exe
@@ -53,30 +53,28 @@ Leave without notice to anyone.
 
 
 for Client compilation:
------------------------
 cd C:\\MyData\\Server_Client\\Client
 gcc -o client client.c
 # copy to the compiled "client.exe" folder the "cygwin1.dll" file
 # from "C:\cygwin64\bin" cygwin istalled folder
 
 For the server compilation :
-----------------------------
 #define USE_SELECT 
 //Allow the define above definition will cause to work with socket "select()" function (the old way)
 //Undefined above definition will cause to work with socket "poll()" function (instead of "select()")
 
-# run "Cygwin64 Terminal" get the "$" prompt:
-#  $ cd C:\\MyData\\Server_Client\\Server
-#  make
-#  make clean
-# copy to the compiled "server.exe" the "cygwin1.dll" file
-# from "C:\cygwin64\bin" cygwin istalled folder
-# if you complile with another cyggwin e.g. 32 bit cygwin need to use the 32bit "cygwin1.dll"
-# mixing 32bit "cygwin1.dll"  with "server.exe" compile 64 bit will crash. 
-# with runtime meaasge box display:
-# Application Error 
-# The application was unable to start correctly(0xc000007b).
-# click OK to close the application
+ run "Cygwin64 Terminal" get the "$" prompt:
+  $ cd C:\\MyData\\Server_Client\\Server
+  make
+  make clean
+ copy to the compiled "server.exe" the "cygwin1.dll" file
+ from "C:\cygwin64\bin" cygwin istalled folder
+ if you complile with another cyggwin e.g. 32 bit cygwin need to use the 32bit "cygwin1.dll"
+ mixing 32bit "cygwin1.dll"  with "server.exe" compile 64 bit will crash. 
+ with runtime meaasge box display:
+ Application Error 
+ The application was unable to start correctly(0xc000007b).
+ click OK to close the application
 
 
 
